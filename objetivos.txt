@@ -1,1 +1,7 @@
 falta revisar la base de datos con el drawio
+
+fc:ahi hice la cagas de mycursor solo falta verificar y hacer algunos cambios si eh necesario ,ahora a mimir  xD ,mañana se chambea como loco 
+(  File "C:\Users\facu\Desktop\informe3_3\sinc_informe_3\informe_3\urls.py", line 3, in <module>
+    from informe_3.views import buscar, html
+  File "C:\Users\facu\Desktop\informe3_3\sinc_informe_3\informe_3\views.py", line 5, in <module>
+    from modelos import *)no se como se hace esa wea de importar la bs asi que la dejo ahi :v
