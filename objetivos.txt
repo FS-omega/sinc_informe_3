@@ -14,8 +14,3 @@ este caso son los archivos "entregado.html" y el archivo "informe.html" y a esos
 RN 2: ya fixie los errores, tener en cuenta que no se ha definido una vista para estas funciones, porque no estamos cargando ningun template en 
 views.py, otra cosa, podriamoos hacer la coneccion a la base de datos en otro archivo y mandarla a llamar, entoces tener las ejecuciones de la 
 base de datos aparte, asi no tenemos que tener tanto codigo en views.py
-
-RN 3:  puse la definicion de base, porque es literalmete la unica clase que hay en views.py es para probar, no esta mostrando nada
-ya que literalmete no tiene un template cargado ni nada, por eso da error xD los datos y variantes que declaraste asi nomas son lo que
-da error, no te asustes, cuando cargemos los template va a cambiar eso, en si el servidor ahora corre
-
