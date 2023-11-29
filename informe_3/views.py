@@ -15,7 +15,7 @@ def your_view(request):
 
     # Create instances for each model
     carr_mod = carr_mod(carre_mod_id=14234323,modulo_id=4321132,id_carrera=246093423)
-    carrera= carrera(id=34, nombre_c="informatica", fecha_hora="hoy", modulo_id=54, jornada_id=24, id_jefe=142344234)
+    carrera= carrera(id_carrera=34, nombre_c="informatica", fecha_hora="hoy", modulo_id=54, jornada_id=24, id_jefe=142344234)
     docente = docente(run=4353223, nombre="marcelo", email="marcelos.cardenas.neira@cftmail.cl", edad=24)
     estado = estado(id=4321)
     est_mod = est_mod(id=4323454, estudiante_id=5543, modulo_id=541)
@@ -34,8 +34,8 @@ def your_view(request):
     mycursor.execute(sqlcarr_mod, carr_mod_val)
     mydb.commit()
    
-    sqlcarrera = "INSERT into carrera(id,nombre_c,fecha_hora,modulo_id,jornada_id,id_jefe) VALUES (%s, %s, %s)"
-    carrera_val = (carr_mod.carre_mod_id, carr_mod.modulo.id, carr_mod.id_carrera)
+    sqlcarrera = "INSERT into carrera(id_carrera,nombre_c,fecha_hora,modulo_id,jornada_id,id_jefe) VALUES (%s, %s, %s,%s, %s)"
+    carrera_val = (carrera.id_carrera, carrera.nombre_c, carrera.fecha_hora,carrera.jornada_id,carrera.id_jefe)
     mycursor.execute(carrera, carrera_val)
     mydb.commit()
     print("1 registro se ha ingresado", mycursor.lastrowid)
