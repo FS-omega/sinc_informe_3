@@ -4,7 +4,6 @@ class carrera :
       self.nombre_est = nombre_c
       self.apellido = fecha_hora
       self.modulo_id = modulo_id
-      self.id_carrera =id_carrera
       self.jornada_id = jornada_id      
       self.id_jefe = id_jefe
 
