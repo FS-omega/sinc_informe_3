@@ -1,4 +1,4 @@
-falta revisar la base de datos con el drawio
+RN: falta revisar la base de datos con el drawio
 
 fc:ahi hice la cagas de mycursor solo falta verificar y hacer algunos cambios si eh necesario ,ahora a mimir  xD ,mañana se chambea como loco 
 (  File "C:\Users\facu\Desktop\informe3_3\sinc_informe_3\informe_3\urls.py", line 3, in <module>
