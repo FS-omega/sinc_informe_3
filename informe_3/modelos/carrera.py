@@ -7,4 +7,4 @@ class carrera :
       self.jornada_id = jornada_id      
       self.id_jefe = id_jefe
 
- 
+
