@@ -3,9 +3,8 @@ from django.shortcuts import render
 import mysql.connector
 from django.template import Template,Context
 from django.template import loader
-from modelos.modelos import *
 from django.http import HttpResponse
-
+from modelos.modelos import modelos
 
 #esto de aqui hacia abajo es todo lo de la base de datos, deberiamos tirarlo aparte e importarlo, seria mas comodo
 

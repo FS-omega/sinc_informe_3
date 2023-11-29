@@ -34,3 +34,5 @@ R5: faltan tabas xddd
 R6: final del dia de hoy (29- 11- 23, 3:13 am) logre cargar el template correctamente, necesario ahora empezar a jugar con los datos, subirlos
 y recibirlos, exporte las variantes de la base de datos a asus respectovivos archivos, estoy pensando en extirpar tambien la base de datos, 
 e incluirla de forma externa en un archivo aparte, seria mas comodo en general, ya que podriamos usar cada tabla en su respectivo archivo sin conmbinar tanto
+
+R7: las impotaciones por alguna razon no quieren funcionar, hace rato estaba todo ok 
