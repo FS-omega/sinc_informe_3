@@ -13,22 +13,35 @@ def base(request):
     )
     mycursor = mydb.cursor()
 
-    # Crear instancias para cada modelo
+    # Crear sus objetos de cada modulo 
+
     carr_mod = CarrMod(carre_mod_id=14234323, modulo_id=4321132, id_carrera=246093423)
+    
     carrera = Carrera(id_carrera=34, nombre_c="informatica", fecha_hora="hoy", modulo_id=54, jornada_id=24, id_jefe=142344234)
+    
     docente_instance = Docente(id_docente=1, d_nombre="anuel", email="docentesaso@example.com", jornada_id=2)
+    
     estado = Estado(id_estado=4321, id_usuario=123, descripcion="wazaaaa", fecha_hora="2023-11-28 12:34:56")
+    
     est_mod = EstMod(id_est_mod=4323454, est_id=5543, modulo_id=541)
+    
     estudiante = Estudiante(run=5432312, nombre_est="esteban", apellido="gonza")
+    
     jefe_carrera_ = JefeCarrera(id_jefe=142344234, id_docente=4353223, estado_id=24, nombre_jefe="marcelo", email="mar@gmail.com", sala_id=201)
+    
     jornada = Jornada(jornada_id=65, jor_inscrip="diurna", jor_horario="hoy", descripcion="bla bla bla", diurna=True, vespertina=False)
+    
     mod_doc = ModDoc(id_mod_doc=1, modulo_id=54, id_docente=63)
+    
     modulo = Modulo(modulo_id=90, mod_nombre="tec", tipo_j="vespertina", fecha_hora="hoy", estado_id=4321, id_usuario=1)
+    
     sala = Sala(sala_id=201, capacidad_sala="capacidad de 50 estudiantes", sala_tipo="completa", id_usuario=34, estado_id=5009)
     semestre = Semestre(id_semestre=1, sem_año=2023, fecha_inicio="2023-01-01", estado_id=2, id_usuario=123)
+    
     usuario = Usuario(id_usuario=1, nombre_usuario="EjemploUsuario")
+    
 
-   
+
         #subidas 
     try:
         # Itabla de carr_mod
