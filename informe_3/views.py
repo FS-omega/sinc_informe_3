@@ -35,7 +35,7 @@ def your_view(request):
     mydb.commit()
     print("1 registro se ha ingresado, id", mycursor.lastrowid)
 
-    sqlcarrera = "INSERT into carrera() VALUES (%s, %s, %s)"
+    sqlcarrera = "INSERT into carrera(carre_mod_id,modulo_id) VALUES (%s, %s, %s)"
     estudiante_val = (estudiante.run, estudiante.nombre_est, estudiante.apellido)
     mycursor.execute(sqlestudiante, estudiante_val)
     mydb.commit()
