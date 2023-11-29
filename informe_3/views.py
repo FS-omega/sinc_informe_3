@@ -3,7 +3,7 @@ from django.shortcuts import render
 import mysql.connector
 from django.template import Template,Context
 from django.template import loader
-from .modelos import *
+from modelos.modelos import *
 from django.http import HttpResponse
 
 
@@ -12,11 +12,22 @@ from django.http import HttpResponse
 def obj_base(request):
     # Crear sus objetos de cada modulo 
         #subidas 
+    carrera =carrera(id_carrera=34, nombre_c="informatica", fecha_hora="hoy", modulo_id=54, jornada_id=24, id_jefe=142344234)
+    
+    #carmod
+    carr_mod = CarrMod(carr_mod_id=14234323, modulo_id=4321132, id_carrera=246093423)
+    
+    #clas_mod
+    clas_mod = clas_mod(clas_mod_id=12,clas_mod=1, clas_id=1)
+    
+    #clase
+    sala  = sala(sala_id=1,capacidad_sala=30, sala_tipo="laboratorio",id_usuario=1, estado_id="disponible")
+    
     
     try:
         # Itabla de carr_mod
         sql_carr_mod = "INSERT into carr_mod (carre_mod_id, modulo_id, id_carrera) VALUES (%s, %s, %s)" 
-        carr_mod_val = (CarrMod.carre_mod_id, carr_mod.modulo_id, carr_mod.id_carrera)
+        carr_mod_val = (carrMod.carre_mod_id, carr_mod.modulo_id, carr_mod.id_carrera)
         mycursor.execute(sql_carr_mod, carr_mod_val)
 
         #tabla de carrrera
