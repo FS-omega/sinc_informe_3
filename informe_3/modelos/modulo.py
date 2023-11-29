@@ -6,3 +6,6 @@ class modulo:
         self.fecha_hora = fecha_hora
         self.estado_id = estado_id
         self.id_usuario = id_usuario
+
+modulo = modulo(modulo_id=90, mod_nombre="tec", tipo_j="vespertina", fecha_hora="hoy", estado_id=4321, id_usuario=1)
+    

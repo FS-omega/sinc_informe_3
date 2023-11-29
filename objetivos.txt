@@ -14,3 +14,23 @@ este caso son los archivos "entregado.html" y el archivo "informe.html" y a esos
 RN 2: ya fixie los errores, tener en cuenta que no se ha definido una vista para estas funciones, porque no estamos cargando ningun template en 
 views.py, otra cosa, podriamoos hacer la coneccion a la base de datos en otro archivo y mandarla a llamar, entoces tener las ejecuciones de la 
 base de datos aparte, asi no tenemos que tener tanto codigo en views.py
+
+RN3: recuerda que los %s son marcadores de posicion, pero tambien son marcadores del tipo de dato que se va a usar, si pones
+%s significa el el dato sera string, si pones %i, quiere decir que el dato es int, ahora te pregunto, las ID de las tablas son int o son string en 
+la base de datos???
+
+RN4: cuando importas ina carpeta completa de archivos, tienes que tener encuenta que debes referenciar los archivos para llamar a sus clases, ejemplo:
+
+archivo: carrera
+clase: carreras
+la convencion correcta seria
+carr1 = carrera.carreras(valores, valore, valores)
+se llama al archivo, y luego a la clase que se va a usar, ya que en un mismo archivo puede haber mas de una clase,
+y por ultimo, me di cuenta que nos sale mejor tener las clases y sus variantes en el mismo lugar, al importarlo dara 
+menos problemas y tambien habra menos codigo en views.py
+
+R5: faltan tabas xddd
+
+R6: final del dia de hoy (29- 11- 23, 3:13 am) logre cargar el template correctamente, necesario ahora empezar a jugar con los datos, subirlos
+y recibirlos, exporte las variantes de la base de datos a asus respectovivos archivos, estoy pensando en extirpar tambien la base de datos, 
+e incluirla de forma externa en un archivo aparte, seria mas comodo en general, ya que podriamos usar cada tabla en su respectivo archivo sin conmbinar tanto

@@ -6,5 +6,7 @@ class carrera :
       self.modulo_id = fecha_hora
       self.jornada_id = jornada_id      
       self.id_jefe = id_jefe
+      self.usuario = id_usuario
 
 
+carrera =carrera(id_carrera=34, nombre_c="informatica", fecha_hora="hoy", modulo_id=54, jornada_id=24, id_jefe=142344234)

@@ -6,3 +6,7 @@ class jornada:
         self.descripcion = descripcion
         self.diurna = diurna
         self.vespertina =vespertina
+        
+        
+jornada = jornada(jornada_id=65, jor_inscrip="diurna", jor_horario="hoy", descripcion="bla bla bla", diurna=True, vespertina=False)
+    

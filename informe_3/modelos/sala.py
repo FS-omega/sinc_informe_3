@@ -5,3 +5,5 @@ class sala:
         self.sala_tipo = sala_tipo,
         self.id_usuario = id_usuario
         self.estado_id = estado_id
+        
+sala = sala(sala_id=201, capacidad_sala="capacidad de 50 estudiantes", sala_tipo="completa", id_usuario=34, estado_id=5009)

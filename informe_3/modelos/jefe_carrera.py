@@ -6,3 +6,6 @@ class jefe_carrera:
         self.nombre_jefe = nombre_jefe
         self.email = email
         self.sala_id = sala_id
+
+jefe_carrera = jefe_carrera(id_jefe=142344234, id_docente=4353223, estado_id=24, nombre_jefe="marcelo", email="mar@gmail.com", sala_id=201)
+    

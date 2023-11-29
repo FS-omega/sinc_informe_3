@@ -1,55 +1,22 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 import mysql.connector
-from django.template.loader import get_template
+from django.template import Template,Context
+from django.template import loader
 from .modelos import *
+from django.http import HttpResponse
+
 
 #esto de aqui hacia abajo es todo lo de la base de datos, deberiamos tirarlo aparte e importarlo, seria mas comodo
 
-@csrf_exempt
-def base(request):
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="cft"
-    )
-    mycursor = mydb.cursor()
-
+def obj_base(request):
     # Crear sus objetos de cada modulo 
-
-    carr_mod = carr_mod(carre_mod_id=14234323, modulo_id=4321132, id_carrera=246093423)
-    
-    carrera = carrera(id_carrera=34, nombre_c="informatica", fecha_hora="hoy", modulo_id=54, jornada_id=24, id_jefe=142344234)
-    
-    docente = docente(id_docente=1, d_nombre="anuel", email="docentesaso@example.com", jornada_id=2)
-    
-    estado = estado(id_estado=4321, id_usuario=123, descripcion="wazaaaa", fecha_hora="2023-11-28 12:34:56")
-    
-    est_mod = est_mod(id_est_mod=4323454, est_id=5543, modulo_id=541)
-    
-    estudiante = estudiante(run=5432312, nombre_est="esteban", apellido="gonza")
-    
-    jefe_carrera = jefe_carrera(id_jefe=142344234, id_docente=4353223, estado_id=24, nombre_jefe="marcelo", email="mar@gmail.com", sala_id=201)
-    
-    jornada = jornada(jornada_id=65, jor_inscrip="diurna", jor_horario="hoy", descripcion="bla bla bla", diurna=True, vespertina=False)
-    
-    mod_doc = mod_doc(id_mod_doc=1, modulo_id=54, id_docente=63)
-    
-    modulo = modulo(modulo_id=90, mod_nombre="tec", tipo_j="vespertina", fecha_hora="hoy", estado_id=4321, id_usuario=1)
-    
-    sala = sala(sala_id=201, capacidad_sala="capacidad de 50 estudiantes", sala_tipo="completa", id_usuario=34, estado_id=5009)
-    semestre = semestre(id_semestre=1, sem_año=2023, fecha_inicio="2023-01-01", estado_id=2, id_usuario=123)
-    
-    usuario = usuario(id_usuario=1, nombre_usuario="EjemploUsuario")
-    
-
-
         #subidas 
+    
     try:
         # Itabla de carr_mod
-        sql_carr_mod = "INSERT into carr_mod (carre_mod_id, modulo_id, id_carrera) VALUES (%s, %s, %s)"
-        carr_mod_val = (carr_mod.carre_mod_id, carr_mod.modulo_id, carr_mod.id_carrera)
+        sql_carr_mod = "INSERT into carr_mod (carre_mod_id, modulo_id, id_carrera) VALUES (%s, %s, %s)" 
+        carr_mod_val = (CarrMod.carre_mod_id, carr_mod.modulo_id, carr_mod.id_carrera)
         mycursor.execute(sql_carr_mod, carr_mod_val)
 
         #tabla de carrrera
@@ -113,12 +80,13 @@ def base(request):
         mycursor.execute(sql_usuario, usuario_val)
 
         mydb.commit()  # Hacer commit después de todas las tablaaaas
+        
 
-   
     finally:
-        mydb.close()
-        return render(request, "./Templates/informe_3.html")
- #desde aqui sera para las plantillas y las vistas
-@csrf_exempt
-def informe(request, base):
-    return render (request, "informe.html")
+        #mydb.close()
+        cargar_html = loader.get_template('informe.html')
+        cargado = cargar_html.render({})
+        
+        return HttpResponse( cargado)
+    #desde aqui sera para las plantillas y las vistas
+    

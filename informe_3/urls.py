@@ -4,5 +4,5 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path ('informe/', informe),
+    path ('informe/', obj_base),
 ]

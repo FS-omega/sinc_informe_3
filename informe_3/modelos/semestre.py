@@ -5,3 +5,5 @@ class semestre:
         self.fecha_inicio =fecha_inicio
         self.estado_id = estado_id
         self.id_usuario = id_usuario
+        
+semestre = semestre(id_semestre=1, sem_año=2023, fecha_inicio="2023-01-01", estado_id=2, id_usuario=123)
