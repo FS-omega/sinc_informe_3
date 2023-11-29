@@ -1,5 +1,5 @@
 class jefe_carrera:
-    def __init__(self,id_jefe ,id_docente,estado_id,	nombre_jefe,email,sala_id):
+    def __init__(self,id_jefe ,id_docente,estado_id ,nombre_jefe ,email ,sala_id):
         self.id_jefe = id_jefe
         self.id_docente = id_docente
         self.estado_id = estado_id
