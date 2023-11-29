@@ -1,0 +1,18 @@
+table, td {
+    height: 10px;
+    border-style: inset;
+    background-color: rgb(213, 176, 248);
+}
+
+#botons {
+    left: 30%;
+    top: 10%;
+}
+
+#cuerpo {
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -130px;
+}
