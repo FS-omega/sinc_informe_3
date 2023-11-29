@@ -13,8 +13,21 @@ from modelos import carr_mod, carrera , docente ,est_mod , estado , estudiante ,
     database="cft"
     )
     mycursor= mydb.cursor()
-    estudiante=estudiante(5,"stefy","villa")
-    carrera=carrera(50,"","")
+    carr_mod= carr_mod("","","","","","","")
+    carrera=carrera("","","")
+    docente=docente("","","","")
+    estado=estado("","","",)
+    est_mod=est_mod("","","")
+    estudiante=estudiante("","","")
+    jefe_carrera=jefe_carrera("","","")
+    jornada=jornada("","","")
+    mod_doc=mod_doc("","","")
+    modulo=modulo("","","")
+    sala=sala("","","")
+    semestre=semestre("","","")
+    usuario=usuario("","","")
+    
+    
 
 
     sqlestudiante = "INSERT into gato(estudiante.run,estudiante_nombre_est,estudiante_apellido) VALUES (%s,%s,%s)"
