@@ -18,7 +18,7 @@ def base(request):
 
     # Crear sus objetos de cada modulo 
 
-    carr_mod = carr_mod(carre_mod_id=14234323, modulo_id=4321132, id_carrera=246093423)
+    Carr_Mod = Carr_Mod(carre_mod_id=14234323, modulo_id=4321132, id_carrera=246093423)
     
     carrera = carrera(id_carrera=34, nombre_c="informatica", fecha_hora="hoy", modulo_id=54, jornada_id=24, id_jefe=142344234)
     
@@ -49,7 +49,7 @@ def base(request):
     try:
         # Itabla de carr_mod
         sql_carr_mod = "INSERT into carr_mod (carre_mod_id, modulo_id, id_carrera) VALUES (%s, %s, %s)"
-        carr_mod_val = (carr_mod.carre_mod_id, carr_mod.modulo_id, carr_mod.id_carrera)
+        carr_mod_val = (Carr_Mod.carre_mod_id, Carr_Mod.modulo_id, Carr_Mod.id_carrera)
         mycursor.execute(sql_carr_mod, carr_mod_val)
 
         #tabla de carrrera
@@ -118,7 +118,37 @@ def base(request):
     finally:
         mydb.close()
         return render(request, "./Templates/informe_3.html")
- #desde aqui sera para las plantillas y las vistas
+
+#desde aqui sera para las plantillas y las vistas
 @csrf_exempt
-def informe(request, base):
-    return render (request, "informe.html")
+def informe(request):
+    return render (request, "informe_3.html")
+
+@csrf_exempt
+def buscar(request):
+    
+    nombre = request.POST['nombre']
+    apellido = request.POST["apellido"]
+    run = request.POST['run']
+    carrera = request.POST['carrera']
+    nt_1 = float(request.POST['nt_1'])  # Convertir a float
+    nt_2 = float(request.POST['nt_2'])
+    nt_3 = float(request.POST['nt_3'])
+    nt_4 = float(request.POST['nt_4'])
+    nt_5 = float(request.POST['nt_5'])
+    nt_6 = float(request.POST['nt_6'])
+    
+    modulo = request.POST["modulo"]
+
+    porc_nt_1 = 0.15
+    porc_nt_2 = 0.15
+    porc_nt_3 = 0.2
+    porc_nt_4 = 0.2
+    porc_nt_5 = 0.15
+    porc_nt_6 = 0.15
+
+    promedio = round((nt_1 * porc_nt_1) + (nt_2 * porc_nt_2) + (nt_3 * porc_nt_3) + (nt_4 * porc_nt_4) + (nt_5 * porc_nt_5) + (nt_6 * porc_nt_6), 2)
+
+    promedio = max(1, min(7, promedio))
+
+    return render(request, './static/templates/entregado.html', {'nombre': nombre, "run": run, "carrera": carrera, "nt_1": nt_1, "nt_2": nt_2, "nt_3": nt_3, "nt_4": nt_4, "nt_5": nt_5, "nt_6": nt_6, "promedio": promedio, "modulo": modulo, "apellido": apellido})
