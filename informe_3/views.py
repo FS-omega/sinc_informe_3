@@ -3,7 +3,7 @@ from django.shortcuts import render
 import mysql.connector
 from .modelos import *
 
-@csrf_exemptc
+@csrf_exempt
 def base(request):
     mydb = mysql.connector.connect(
         host="localhost",
