@@ -36,10 +36,15 @@ def your_view(request):
    
     sqlcarrera = "INSERT into carrera(id_carrera,nombre_c,fecha_hora,modulo_id,jornada_id,id_jefe) VALUES (%s, %s, %s,%s, %s)"
     carrera_val = (carrera.id_carrera, carrera.nombre_c, carrera.fecha_hora,carrera.jornada_id,carrera.id_jefe)
-    mycursor.execute(carrera, carrera_val)
+    mycursor.execute(sqlcarrera, carrera_val)
     mydb.commit()
     print("1 registro se ha ingresado", mycursor.lastrowid)
     
+    sqldocente = "INSERT into docente(id_docente,d_nombre,email,jornada_id) VALUES (%s, %s, %s,%s)"
+    docente_val = (docente.id_docente,docente.d_docente,docente.email,docente.jornada_id)
+    mycursor.execute(sqldocente, docente_val)
+    mydb.commit()
+    print("1 registro se ha ingresado", mycursor.lastrowid)
     
     
     
