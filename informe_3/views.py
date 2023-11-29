@@ -1,7 +1,10 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 import mysql.connector
+from django.template.loader import get_template
 from .modelos import *
+
+#esto de aqui hacia abajo es todo lo de la base de datos, deberiamos tirarlo aparte e importarlo, seria mas comodo
 
 @csrf_exempt
 def base(request):
@@ -115,3 +118,7 @@ def base(request):
     finally:
         mydb.close()
         return render(request, "./Templates/informe_3.html")
+ #desde aqui sera para las plantillas y las vistas
+@csrf_exempt
+def informe(request, base):
+    return render (request, "informe.html")
