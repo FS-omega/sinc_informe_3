@@ -5,3 +5,12 @@ fc:ahi hice la cagas de mycursor solo falta verificar y hacer algunos cambios si
     from informe_3.views import buscar, html
   File "C:\Users\facu\Desktop\informe3_3\sinc_informe_3\informe_3\views.py", line 5, in <module>
     from modelos import *)no se como se hace esa wea de importar la bs asi que la dejo ahi :v
+    
+RN: 
+el primer error sale porque estas generando una URL de una clase que no estas importando, en este caso es 
+del archivo views estas trayendo "buscar" y el archivo "hmtl", cuando deberias llamar a los archivos del template que tienes, en 
+este caso son los archivos "entregado.html" y el archivo "informe.html" y a esos archivos generarles una view y luego una URL.
+
+RN 2: ya fixie los errores, tener en cuenta que no se ha definido una vista para estas funciones, porque no estamos cargando ningun template en 
+views.py, otra cosa, podriamoos hacer la coneccion a la base de datos en otro archivo y mandarla a llamar, entoces tener las ejecuciones de la 
+base de datos aparte, asi no tenemos que tener tanto codigo en views.py

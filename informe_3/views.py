@@ -1,8 +1,12 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-import mysql.connector   #?
+import mysql.connector   
+from informe_3.modelos import *  
 
+<<<<<<< HEAD
 from modelos import *    #?
+=======
+>>>>>>> 5197a3ea492abef2e2fa301c7980316bb97a7f39
 @csrf_exempt
 def base(request):
     mydb = mysql.connector.connect(
