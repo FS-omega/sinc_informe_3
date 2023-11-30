@@ -47,7 +47,7 @@ def base(request):
     sala = Sala(sala_id=NAleatorio, capacidad_sala="capacidad de 50 estudiantes", sala_tipo="completa",  estado_id=5009)
     
     semestre = Semestre(id_semestre=NAleatorio, sem_ano=2023, fecha_inicio="2023-01-01", estado_id=NAleatorio)
-    docentes = docente.objects.all()
+    
    # usuario = Usuario(id_usuario=3, nombre_usuario="EjemploUsuario")
 
     # Subidas
@@ -120,6 +120,7 @@ def base(request):
         mydb.commit()  # Hacer commit después de todas las tablas
         mydb.close()
     finally:
+        docentes = docente.objects.all()
         
         return render(request, 'entregado.html', {"atributo":docentes})
 
