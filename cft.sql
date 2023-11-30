@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2023 a las 03:01:02
+-- Tiempo de generación: 30-11-2023 a las 01:35:29
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cft`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bloque`
+--
+
+CREATE TABLE `bloque` (
+  `bloque_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -46,6 +56,31 @@ CREATE TABLE `carr_mod` (
   `carre_mod_id` int(10) NOT NULL,
   `modulo_id` int(10) NOT NULL,
   `id_carrera` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dia`
+--
+
+CREATE TABLE `dia` (
+  `dia_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `disp_docente`
+--
+
+CREATE TABLE `disp_docente` (
+  `disp_doc_id` int(10) NOT NULL,
+  `id_docente` int(10) NOT NULL,
+  `bloque_id` int(10) NOT NULL,
+  `jornada_id` int(10) NOT NULL,
+  `estado_id` int(10) NOT NULL,
+  `id_usuario` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -99,6 +134,23 @@ CREATE TABLE `est_mod` (
   `id_est_mod` int(10) NOT NULL,
   `est_id` int(10) NOT NULL,
   `modulo_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horario`
+--
+
+CREATE TABLE `horario` (
+  `horario_id` int(10) NOT NULL,
+  `jornada_id` int(10) NOT NULL,
+  `estado_id` int(10) NOT NULL,
+  `horario_year` int(10) DEFAULT NULL,
+  `bloque_id` int(10) NOT NULL,
+  `sala_id` int(10) NOT NULL,
+  `modulo_id` int(10) NOT NULL,
+  `dia_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -202,6 +254,12 @@ CREATE TABLE `usuario` (
 --
 
 --
+-- Indices de la tabla `bloque`
+--
+ALTER TABLE `bloque`
+  ADD PRIMARY KEY (`bloque_id`);
+
+--
 -- Indices de la tabla `carrera`
 --
 ALTER TABLE `carrera`
@@ -217,6 +275,23 @@ ALTER TABLE `carr_mod`
   ADD PRIMARY KEY (`carre_mod_id`),
   ADD KEY `fk_carrera_modulo` (`modulo_id`),
   ADD KEY `fk_carrera_modul` (`id_carrera`);
+
+--
+-- Indices de la tabla `dia`
+--
+ALTER TABLE `dia`
+  ADD PRIMARY KEY (`dia_id`);
+
+--
+-- Indices de la tabla `disp_docente`
+--
+ALTER TABLE `disp_docente`
+  ADD PRIMARY KEY (`disp_doc_id`),
+  ADD KEY `FK_disp_docente1` (`id_docente`),
+  ADD KEY `FK_disp_docente2` (`bloque_id`),
+  ADD KEY `FK_disp_docente3` (`jornada_id`),
+  ADD KEY `FK_disp_docente4` (`estado_id`),
+  ADD KEY `FK_disp_docente5` (`id_usuario`);
 
 --
 -- Indices de la tabla `docente`
@@ -247,6 +322,18 @@ ALTER TABLE `est_mod`
   ADD PRIMARY KEY (`id_est_mod`),
   ADD KEY `FK_est_id` (`est_id`),
   ADD KEY `FK_modulo` (`modulo_id`);
+
+--
+-- Indices de la tabla `horario`
+--
+ALTER TABLE `horario`
+  ADD PRIMARY KEY (`horario_id`),
+  ADD KEY `jornada_id` (`jornada_id`),
+  ADD KEY `estado_id` (`estado_id`),
+  ADD KEY `fk_bloque_horario` (`bloque_id`),
+  ADD KEY `FK_sala_horario` (`sala_id`),
+  ADD KEY `FK_modulo_horario` (`modulo_id`),
+  ADD KEY `FK_dia_horario` (`dia_id`);
 
 --
 -- Indices de la tabla `jefe_carrera`
@@ -320,6 +407,16 @@ ALTER TABLE `carr_mod`
   ADD CONSTRAINT `fk_carrera_modulo` FOREIGN KEY (`modulo_id`) REFERENCES `modulo` (`modulo_id`);
 
 --
+-- Filtros para la tabla `disp_docente`
+--
+ALTER TABLE `disp_docente`
+  ADD CONSTRAINT `FK_disp_docente1` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
+  ADD CONSTRAINT `FK_disp_docente2` FOREIGN KEY (`bloque_id`) REFERENCES `bloque` (`bloque_id`),
+  ADD CONSTRAINT `FK_disp_docente3` FOREIGN KEY (`jornada_id`) REFERENCES `jornada` (`jornada_id`),
+  ADD CONSTRAINT `FK_disp_docente4` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`estado_id`),
+  ADD CONSTRAINT `FK_disp_docente5` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+
+--
 -- Filtros para la tabla `docente`
 --
 ALTER TABLE `docente`
@@ -339,6 +436,17 @@ ALTER TABLE `estudiante`
 ALTER TABLE `est_mod`
   ADD CONSTRAINT `FK_est_id` FOREIGN KEY (`est_id`) REFERENCES `estudiante` (`est_id`),
   ADD CONSTRAINT `FK_modulo` FOREIGN KEY (`modulo_id`) REFERENCES `modulo` (`modulo_id`);
+
+--
+-- Filtros para la tabla `horario`
+--
+ALTER TABLE `horario`
+  ADD CONSTRAINT `FK_dia_horario` FOREIGN KEY (`dia_id`) REFERENCES `dia` (`dia_id`),
+  ADD CONSTRAINT `FK_modulo_horario` FOREIGN KEY (`modulo_id`) REFERENCES `modulo` (`modulo_id`),
+  ADD CONSTRAINT `FK_sala_horario` FOREIGN KEY (`sala_id`) REFERENCES `sala` (`sala_id`),
+  ADD CONSTRAINT `fk_bloque_horario` FOREIGN KEY (`bloque_id`) REFERENCES `bloque` (`bloque_id`),
+  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`jornada_id`) REFERENCES `jornada` (`jornada_id`),
+  ADD CONSTRAINT `horario_ibfk_2` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`estado_id`);
 
 --
 -- Filtros para la tabla `jefe_carrera`
