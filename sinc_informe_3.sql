@@ -232,7 +232,7 @@ CREATE TABLE `sala` (
 
 CREATE TABLE `semestre` (
   `id_semestre` int(10) NOT NULL,
-  `sem_año` int(10) DEFAULT NULL,
+  `sem_ano` int(10) DEFAULT NULL,
   `fecha_inicio` int(10) DEFAULT NULL,
   `estado_id` int(10) NOT NULL,
   `id_usuario` int(10) NOT NULL

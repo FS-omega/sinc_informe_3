@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es-ch">
 
@@ -6,19 +7,21 @@
     <meta http-equiv="x-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>prueba.tabla</title>
-    <link href="{% static 'style1.css' %}" rel="stylesheet" type="txt/css">
+    <link href="{% static 'style2.css' %}" rel="stylesheet" type="txt/css">
 </head>
 
 <body id="cuerpo">
     <table>
-        <form method="POST" action="/pagina/">
+        <form method="POST" action="/informe/">
             <tr>
                 <td><h2>Formulario Estudiante</h2></td>
             </tr>
 
             <tr>
-                <td for="nombre">Nombre completo:</td>
-                <td for="nombre">{{nombre}}</td>
+                <td for="nombre">docente</td>
+                <td for="nombre">{%for atributo in atributo.items %}</td>
+                    <li>{{atributo}}: {{valor}}
+                {% endfor %}
             </tr>
             <tr>
                 <td for="apellido">Apellido:</td>
