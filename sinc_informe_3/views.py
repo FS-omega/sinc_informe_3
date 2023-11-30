@@ -2,7 +2,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 import mysql.connector
 from django.template.loader import get_template
-from .modelos import *
 
 #esto de aqui hacia abajo es todo lo de la base de datos, deberiamos tirarlo aparte e importarlo, seria mas comodo
 

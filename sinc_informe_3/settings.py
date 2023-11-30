@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sinc_informe_3.informe3'
+    'sinc_informe_3'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'informe_3.urls'
+ROOT_URLCONF = 'sinc_informe_3.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'informe_3.wsgi.application'
+WSGI_APPLICATION = 'sinc_informe_3.wsgi.application'
 
 
 # Database
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'informe_3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': BASE_DIR / 'cft',
+        'NAME':'cft',
         "USER":"root",
         "PASSWORD":"",
         "HOST": "localhost",
-        "PORT": "3306"
+        "PORT": 3306
     }
 }
 
