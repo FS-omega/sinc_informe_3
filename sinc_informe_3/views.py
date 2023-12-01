@@ -2,12 +2,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 import mysql.connector
 from django.template.loader import get_template
-from .models import CarrMod, Carrera, Docente, Estado, EstMod, Estudiante, JefeCarrera, Jornada, ModDoc, Modulo, Sala, Semestre
+from .models import CarrMod, Carrera, Docente, Estado, EstMod, Estudiante, JefeCarrera, Jornada, ModDoc, sinc_informe_3_modulo, Sala, Semestre
 import random
+from django.db import models
 # Esto de aquí hacia abajo es todo lo de la base de datos, deberíamos separarlo e importarlo, sería más cómodo
 
 @csrf_exempt
-def base(request):
+def base (request):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
@@ -15,15 +16,14 @@ def base(request):
         database="cft"
     )
     mycursor = mydb.cursor()
-    atrib_docente = vars(docente)
+   
     NAleatorio= random.randint(1, 10000)
     #usuario = Usuario.objects.create(nombre_usuario="EjemploUsuario")
         # Crear instancias de Modulo, Carrera
-    modulo = Modulo.objects.create(modulo_id=NAleatorio, mod_nombre="N", tipo_j="Vespertina", estado_id=1)
     carrera = Carrera.objects.create(id_carrera=NAleatorio, nombre_c="Informatica",  modulo_id=54, jornada_id=24, id_jefe=142344234)
 
     # Crear instancia de CarrMod con las instancias creadas
-    carr_mod = CarrMod.objects.create(carre_mod_id=NAleatorio, modulo_id=modulo.modulo_id, id_carrera=carrera.id_carrera)
+    carr_mod = CarrMod.objects.create(carre_mod_id=NAleatorio, modulo_id=NAleatorio, id_carrera=NAleatorio)
 
 
     # Crear sus objetos de cada Modulo 
@@ -34,7 +34,7 @@ def base(request):
     
     est_mod = EstMod(id_est_mod=NAleatorio, est_id=NAleatorio, modulo_id=NAleatorio)
     
-    estudiante = Estudiante(est_id=NAleatorio, estado_id=NAleatorio, est_nombre="gonzalo", email="electrofunkopopprogresivo@gmailcom", modulo_id=modulo.modulo_id)
+    estudiante = Estudiante(est_id=NAleatorio, estado_id=NAleatorio, est_nombre="gonzalo", email="electrofunkopopprogresivo@gmailcom", modulo_id=NAleatorio)
     
     jefe_carrera = JefeCarrera(id_jefe=NAleatorio, id_docente=NAleatorio, estado_id=NAleatorio, nombre_jefe="marcelo", email="mar@gmail.com", sala_id=NAleatorio)
     
@@ -42,16 +42,20 @@ def base(request):
     
     mod_doc = ModDoc(id_mod_doc=NAleatorio, modulo_id=NAleatorio, id_docente=NAleatorio)
     
-    modulo = Modulo(modulo_id=NAleatorio, mod_nombre="tec", tipo_j="vespertina", estado_id=NAleatorio)
+    modulo = sinc_informe_3_modulo(modulo_id=NAleatorio, mod_nombre="tec", tipo_j="vespertina", estado_id=NAleatorio)
     
     sala = Sala(sala_id=NAleatorio, capacidad_sala="capacidad de 50 estudiantes", sala_tipo="completa",  estado_id=5009)
     
     semestre = Semestre(id_semestre=NAleatorio, sem_ano=2023, fecha_inicio="2023-01-01", estado_id=NAleatorio)
     
+    
    # usuario = Usuario(id_usuario=3, nombre_usuario="EjemploUsuario")
 
     # Subidas
     try:
+        docente.save()
+        """
+        
         # Tabla de carr_mod
         sql_carr_mod = "INSERT into carr_mod (carre_mod_id, modulo_id, id_carrera) VALUES (%s, %s, %s)"
         carr_mod_val = (carr_mod.carre_mod_id, carr_mod.modulo_id, carr_mod.id_carrera)
@@ -63,9 +67,9 @@ def base(request):
         mycursor.execute(sql_carrera, carrera_val)
 
         # Tabla de docente 
-        sql_docente = "INSERT into docente (id_docente, d_nombre, email, jornada_id) VALUES (%s, %s, %s, %s)"
-        docente_val = (docente.id_docente, docente.d_nombre, docente.email, docente.jornada_id)
-        mycursor.execute(sql_docente, docente_val)
+        #sql_docente = "INSERT into docente (id_docente, d_nombre, email, jornada_id) VALUES (%s, %s, %s, %s)"
+        #docente_val = (docente.id_docente, docente.d_nombre, docente.email, docente.jornada_id)
+        # mycursor.execute(sql_docente, docente_val)
 
         # Tabla de estado
         sql_estado = "INSERT into estado (estado_id,  descripcion) VALUES (%s, %s)"
@@ -116,13 +120,13 @@ def base(request):
         #sql_usuario = "INSERT into usuario (id_usuario, nombre_usuario) VALUES (%s, %s)"
         #usuario_val = (usuario.id_usuario, usuario.nombre_usuario)
         #mycursor.execute(sql_usuario, usuario_val)
+        """
 
         mydb.commit()  # Hacer commit después de todas las tablas
-        mydb.close()
-    finally:
-        docentes = docente.objects.all()
         
-        return render(request, 'entregado.html', {"atributo":docentes})
+    finally:
+        mydb.close()
+        return render(request, 'entregado.html', {"atributo":docente})
 
 # Desde aquí será para las plantillas y las vistas
 @csrf_exempt

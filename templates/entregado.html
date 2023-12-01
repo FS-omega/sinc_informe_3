@@ -12,16 +12,15 @@
 
 <body id="cuerpo">
     <table>
-        <form method="POST" action="/informe/">
+        <form method="get" action="/informe/">
             <tr>
                 <td><h2>Formulario Estudiante</h2></td>
             </tr>
 
             <tr>
                 <td for="nombre">docente</td>
-                <td for="nombre">{%for atributo in atributo.items %}</td>
-                    <li>{{atributo}}: {{valor}}
-                {% endfor %}
+                <td for="nombre">{{atributo.d_nombre}}</td>
+                
             </tr>
             <tr>
                 <td for="apellido">Apellido:</td>

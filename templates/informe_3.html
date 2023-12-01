@@ -10,14 +10,14 @@
 </head>
 
 <body id="cuerpo">
-  <form method="get" action="/base/">
+  <form method="post" action="/base/">
     {% csrf_token %}
     <table>
       <tr id="h3">
         <td><h3>formulario_estudiante</h3></td>
       </tr>
       <tr>
-        <td><label for="nombre">{{docente}}</label></td>
+        <td><label for="nombre">docene nombre</label></td>
         <td><input type="text" placeholder="nombre completo" name="nombre"><br></td>
       </tr>
       <tr>
