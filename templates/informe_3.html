@@ -10,44 +10,40 @@
 </head>
 
 <body id="cuerpo">
-  <form method="get" action="/base/">
+<<<<<<< HEAD
+  <form method="POST" action="/base/"> 
+=======
+  <form method="post" action="/base/">
+>>>>>>> 02b0462dca9a71c816aa03929f0bded510965292
     {% csrf_token %}
     <table>
       <tr id="h3">
         <td><h3>formulario_estudiante</h3></td>
       </tr>
       <tr>
-        <td><label for="nombre">{{docente}}</label></td>
+<<<<<<< HEAD
+        <td><label for="nombre">doc_nombre</label></td>
+=======
+        <td><label for="nombre">docene nombre</label></td>
+>>>>>>> 02b0462dca9a71c816aa03929f0bded510965292
         <td><input type="text" placeholder="nombre completo" name="nombre"><br></td>
       </tr>
+      
       <tr>
-        <td><label for="apellido">apellido:</label></td>
-        <td><input type="text" placeholder="apellido" name="apellido"><br></td>
+        <td><label for="nombre">doc id</label></td>
+        <td><input type="text" placeholder="nombre completo" name="id_doc"><br></td>
       </tr>
+      
       <tr>
-        <td><label for="run">run</label></td>
-        <td><input type="text" placeholder="run" name="run" maxlength="8"><br></td> <!-- Corregido 'limit' a 'maxlength' -->
+        <td><label for="nombre">doc_nombre</label></td>
+        <td><input type="text" placeholder="nombre completo" name="email"><br></td>
       </tr>
+      
       <tr>
-        <td><label for="carrera">carrera</label></td>
-        <td><input type="text" placeholder="carrera" id="carrera" name="carrera"><br></td>
+        <td><label for="nombre">doc_nombre</label></td>
+        <td><input type="text" placeholder="nombre completo" name="jornada"><br></td>
       </tr>
-      <tr>
-        <td><label for="text">notas</label></td>
-        <td>
-          <input type="text" name="nt_1">
-          <input type="text" id="nt2" name="nt_2">
-          <input type="text" id="c" name="nt_3">
-          <input type="text" id="d" name="nt_4">
-          <input type="text" id="e" name="nt_5">
-          <input type="text" id="f" name="nt_6">
-        </td>
-      </tr>
-      <tr>
-        <td><label for="modulo">modulo</label></td>
-        <td><input type="text" placeholder="modulo" name="modulo"><br></td>
-      </tr>
-      <tr>
+      
         <td id="botons">
           <input type="submit" value="enviar">
           <input type="reset" value="reiniciar">

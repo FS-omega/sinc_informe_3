@@ -81,7 +81,7 @@ class ModDoc(models.Model):
     modulo_id = models.IntegerField()
     id_docente = models.IntegerField()
 
-class Modulo(models.Model):
+class sinc_informe_3_modulo(models.Model):
     modulo_id = models.IntegerField(primary_key=True)
     mod_nombre = models.CharField(max_length=1, blank=True, null=True)
     tipo_j = models.CharField(max_length=10, blank=True, null=True)
