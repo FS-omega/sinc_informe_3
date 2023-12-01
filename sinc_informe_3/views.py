@@ -21,10 +21,11 @@ def base(request):
             return render(request, "error.html", {"error_message": "Faltan campos obligatorios en el formulario"})
     else:
         # Maneja el caso en el que es una solicitud GET (renderiza el formulario inicial, redirige, etc.)
-        return render(request, "entregado.html")  # Reemplaza 'tu_template.html' con el nombre real de tu plantilla
+        return render(request, "informe_3.html")  # Reemplaza 'tu_template.html' con el nombre real de tu plantilla
     
     
     
     
     #PROFE SI VE ESTO, PROBE DE TODO, NADA ME DA ERROR PERO POR ALGUNA RAZON LOS REGISTROS NO SE MANDAN A LA BASE DE DATOAS, SIENDO QUE YA LO HABIA LOGRADO CONECTAR
     #POR ALGUNA RAZON LA FUNCION .SAVE NO ESTA REGISTRANDO DATOS, si se sienta a explicarme como *¨!*"¨!"  deberia funcar se lo agradeceria 
+    #me reconoce la base de datos, las tablas y todo, pero no inserta en la base de datos usando las funciones que tiene django
