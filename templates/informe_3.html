@@ -10,38 +10,34 @@
 </head>
 
 <body id="cuerpo">
-<<<<<<< HEAD
+
   <form method="POST" action="/base/"> 
-=======
-  <form method="post" action="/base/">
->>>>>>> 02b0462dca9a71c816aa03929f0bded510965292
+
     {% csrf_token %}
     <table>
       <tr id="h3">
         <td><h3>formulario_estudiante</h3></td>
       </tr>
       <tr>
-<<<<<<< HEAD
-        <td><label for="nombre">doc_nombre</label></td>
-=======
-        <td><label for="nombre">docene nombre</label></td>
->>>>>>> 02b0462dca9a71c816aa03929f0bded510965292
-        <td><input type="text" placeholder="nombre completo" name="nombre"><br></td>
-      </tr>
-      
-      <tr>
-        <td><label for="nombre">doc id</label></td>
+
+        <td><label for="nombre">id docente</label></td>
+
         <td><input type="text" placeholder="nombre completo" name="id_doc"><br></td>
       </tr>
       
       <tr>
         <td><label for="nombre">doc_nombre</label></td>
-        <td><input type="text" placeholder="nombre completo" name="email"><br></td>
+        <td><input type="text" placeholder="nombre completo" name="doc_nombre"><br></td>
       </tr>
       
       <tr>
-        <td><label for="nombre">doc_nombre</label></td>
-        <td><input type="text" placeholder="nombre completo" name="jornada"><br></td>
+        <td><label for="nombre">email</label></td>
+        <td><input type="email" placeholder="nombre completo" name="email"><br></td>
+      </tr>
+      <tr>
+        <td>
+          {{doc_nombre}}
+        </td>
       </tr>
       
         <td id="botons">

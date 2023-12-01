@@ -36,7 +36,7 @@ class Docente(models.Model):
 class Estado(models.Model):
     estado_id = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=250, blank=True, null=True)
-    fecha_hora = models.CharField(max_length=255, blank=True, null=True)
+    fecha_hora = models.DateTimeField(max_length=255, blank=True, null=True)
 
 class Estudiante(models.Model):
     est_id = models.IntegerField(primary_key=True)
@@ -65,7 +65,7 @@ class JefeCarrera(models.Model):
     id_docente = models.IntegerField(blank=True, null=True)
     estado_id = models.IntegerField(blank=True, null=True)
     nombre_jefe = models.CharField(max_length=10, blank=True, null=True)
-    email = models.CharField(max_length=10, blank=True, null=True)
+    email = models.EmailField(max_length=10, blank=True, null=True)
     sala_id = models.IntegerField()
 
 class Jornada(models.Model):
@@ -102,7 +102,3 @@ class Semestre(models.Model):
     estado_id = models.IntegerField()
 
    
-class test(models.Model):
-    id_test = models.IntegerField(primary_key=True)
-    nombre_test = models.CharField(max_length=10, blank=True, null=False)
-    

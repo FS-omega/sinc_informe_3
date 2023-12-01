@@ -1,39 +1,23 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
-import mysql.connector
-from .models import CarrMod, Carrera, Docente, Estado, EstMod, Estudiante, JefeCarrera, Jornada, ModDoc, Modulo, Sala, Semestre
-from .forms import DocenteForm
+from formulario.models import CarrMod, Carrera, Docente, Estado, EstMod, Estudiante, JefeCarrera, Jornada, ModDoc, Sala, Semestre
 
 @csrf_exempt
 def base(request):
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="cft"
-    )
-    mycursor = mydb.cursor()
+    if request.method == 'POST':
+        # Verifica si las claves requeridas están presentes en los datos POST
+        if 'id_doc' in request.POST and 'doc_nombre' in request.POST and 'email' in request.POST:
+            doce = Docente(
+                id_docente=request.POST["id_doc"],
+                d_nombre=request.POST["doc_nombre"],
+                email=request.POST["email"]
+            )
+            doce.save()
 
-    try:
-        if request.method == "POST":
-            form = DocenteForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return render(request, 'entregado.html', {"nombre": form.cleaned_data['d_nombre']})
+            return render(request, "informe_3.html", {"docente_nombre": doce.d_nombre})
         else:
-            form = DocenteForm()
-
-        mydb.commit()  # Hacer commit después de todas las tablas
-
-    except Exception as e:
-        # Manejar la excepción, puedes imprimir el error para depuración
-        print(f"Error: {e}")
-
-    finally:
-        mydb.close()
-
-    return render(request, 'entregado.html', {'form': form})
-
-@csrf_exempt
-def informe(request):
-    return render(request, "informe_3.html")
+            # Maneja el caso en el que faltan claves requeridas en los datos POST
+            return render(request, "error.html", {"error_message": "Faltan campos obligatorios en el formulario"})
+    else:
+        # Maneja el caso en el que es una solicitud GET (renderiza el formulario inicial, redirige, etc.)
+        return render(request, "informe_3.html")  # Reemplaza 'tu_template.html' con el nombre real de tu plantilla
